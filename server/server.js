@@ -1,27 +1,17 @@
-// const db = require('../config/database');
-// const express = require('express');
-// const app = express();
-// const PORT = process.env.PORT || 4000;
+const mdbConn = require('../config/database');
+const express = require('express');
+const app = express();
 
-// db.getUserList().then((rows) => console.log(rows))
-// .catch((err) => { console.log(err); });
+mdbConn
+    .getUserList()
+    .then((rows) => {
+        console.log(rows);
+    })
+    .catch((errMsg) => {
+        console.log(errMsg);
+    });
 
-// app.listen(PORT, () => {
-//   console.log(`listening on ${PORT}`);
-// });
-
-var sql = require('./select');
-
-console.log('**Started');
-
-sql.select(function(err, data) {
-  if(err) console.log(err);
-  else console.log(data);
-
-  sql.pool.end(function(err) {
-    if(err) console.log(err);
-    else{
-      console.log('**Finished');
-    }
-  });
+const port = 5000; //정상이면 포트번호가
+app.listen(port, () => {
+    console.log(`listening on ${port}`);
 });
