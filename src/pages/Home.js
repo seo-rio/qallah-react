@@ -6,18 +6,25 @@ const Home = () => {
     const [username, setUserName] = useState(null);
 
     const clickEvent = () => {
-        service.fetchQuestion().
-        then(function(response) {
-            console.log(response);
-        }).catch(function(error){
-            console.log(error);
-        })
-        // axios.get('/getData',{
-        // }).then(function(response) {
+        // service.fetchQuestion().
+        // then(function(response) {
         //     console.log(response);
         // }).catch(function(error){
         //     console.log(error);
         // })
+        // // axios.get('/getData',{
+        // // }).then(function(response) {
+        // //     console.log(response);
+        // // }).catch(function(error){
+        // //     console.log(error);
+        // // })
+        axios.get('/getData', {
+        }).then ( function (res) {
+            console.log(res)
+        }).catch( function (err) {
+            console.log(err);
+        })
+        console.log('Hello')
     };
     
     useEffect(() => {
