@@ -1,20 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import * as service from '../api/posts';
 
 const Home = () => {
     const [username, setUserName] = useState(null);
 
     const clickEvent = () => {
-        axios.get('/getData',{
-        }).then(function(response) {
+        service.fetchQuestion().
+        then(function(response) {
             console.log(response);
         }).catch(function(error){
             console.log(error);
         })
+        // axios.get('/getData',{
+        // }).then(function(response) {
+        //     console.log(response);
+        // }).catch(function(error){
+        //     console.log(error);
+        // })
     };
+    
     useEffect(() => {
-      fetch('/api/getUsername').then(res=>res.json())
-      .then(user=> setUserName(user.username))
+        fetch('/api/getUsername').then(res=>res.json())
+        .then(user=> setUserName(user.username))
     }, []);
 
     return (
