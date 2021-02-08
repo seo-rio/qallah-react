@@ -14,7 +14,7 @@ import apiConfing from './apiConfig';
 export const questionToMeApi = {
     getQuestionList() {
         return apiConfing({
-            url: '/getData',
+            url: '/member/list',
             method: 'get',
         });
     },
