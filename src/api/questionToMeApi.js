@@ -1,4 +1,4 @@
-import axios from 'axios';
+//import axios from 'axios';
 import apiConfing from './apiConfig';
 
 // // question 데이터 조회
