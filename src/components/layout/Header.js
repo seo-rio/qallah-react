@@ -57,7 +57,7 @@ const Header = () => {
                     ) : !login ? (
                         // 로그인 시
                         <div class="nav_right nav_profile">
-                            <Link to="/">
+                        <Link to="/">
                                 <div class="profile-picture"></div>
                             </Link>
                         </div>
