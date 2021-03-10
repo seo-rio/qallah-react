@@ -30,4 +30,4 @@ const getConn = function (callback) {
     });
 };
 
-module.exports = getConn;
+module.exports = pool;
