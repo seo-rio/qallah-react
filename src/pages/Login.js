@@ -1,30 +1,66 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const Login = () => {
+
+    const [inputEmail, setInputEmail] = useState("");
+    const [inputPassword, setInputPassword] = useState("");
+
+    const handleInputEmail = (e) => {
+      e.preventDefault();
+      setInputEmail(e.target.value);
+    }
+
+    const handleInputPassword = (e) => {
+      e.preventDefault();
+      setInputPassword(e.target.value);
+    }
+
+    const handleSubmit = async() => {
+      
+      const inputInfo = {
+        email : inputEmail,
+        password : inputPassword
+      };
+      
+      try{
+        const response = await axios.get('/api/getUsername');
+        console.log(response);
+        console.log(inputInfo);
+      } catch (e) {
+        console.log('err');
+      } 
+    }
+
     return (
-        <section class="login-section">
-            <div class="sections-overlay login-overlay">
-                <div class="login-container">
-                    <div class="login-tab-wrapper">
-                        <div class="register-tab">
-                            <Link class="register-label sub-tab lang-eng" to="/Register">SignUp</Link>
+        <section className="login-section">
+            <div className="sections-overlay login-overlay">
+                <div className="login-container">
+                    <div className="login-tab-wrapper">
+                        <div className="register-tab">
+                            <Link className="register-label sub-tab lang-eng" to="/Register">SignUp</Link>
                         </div>
-                        <div class="login-tab">
-                            <h2 class="login-label lang-eng">Log In</h2>
-                        </div>
-                    </div>
-                    <div class="login-form">
-                        <div class="login-form-container">
-                            <div class="login-field id-field">
-                                <input type="text" placeholder="Email" required />
-                            </div>
-                            <div class="login-field pwd-field">
-                                <input type="password" placeholder="Password" required />
-                            </div>
+                        <div className="login-tab">
+                            <h2 className="login-label lang-eng">Log In</h2>
                         </div>
                     </div>
-                    <Link to="/" class="login-button lang-eng">Login Now</Link> 
+                    <div className="login-form">
+                        <div className="login-form-container">
+                            <div className="login-field id-field">
+                                <input type="text" 
+                                onChange = {(e) => handleInputEmail(e)}
+                                placeholder="Email" required />
+                            </div>
+                            <div className="login-field pwd-field">
+                                <input type="password" 
+                                onChange = {(e) => handleInputPassword(e)}
+                                placeholder="Password" required />
+                            </div>
+                        </div>
+                    </div>
+                    <button className="login-button lang-eng" onClick={(e) => handleSubmit(e)}>Login Now</button>
+                    {/* <Link to="/" >Login Now</Link>  */}
                 </div>
             </div>      
         </section>
